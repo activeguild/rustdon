@@ -79,4 +79,33 @@ fn main() {
 
     println!("{:?}", v1[1]);
     println!("{:?}", v2[1]);
+
+    // Box
+    // u8型の配列
+    // let byte_array = [b'j', b'e', b'1', b'1', b'o'];
+    // printbox(Box::new(byte_array));
+    // let byte_array = [b'j', b'e'];
+    // printbox(Box::new(byte_array));
+
+    // 変数宣言
+    // let mut
+    let immut_val = 10;
+    let mut mut_val = 20;
+
+    mut_val += immut_val;
+    println!("{:?}", mut_val);
+
+    // 制御構文
+    let number = 1;
+    if 0 < number {
+        println!("0 < number");
+    } else if number < 0 {
+        println!("number < 0");
+    } else {
+        println!("0 == number");
+    }
+}
+
+fn printbox(s: Box<u8>) {
+    print!("{:?}", s);
 }
