@@ -104,6 +104,50 @@ fn main() {
     } else {
         println!("0 == number");
     }
+
+    // ループ
+    let mut count = 0;
+
+    let resultLoop = loop {
+        println!("count {}", count);
+
+        count += 1;
+
+        if count == 10 {
+            break count;
+        }
+    };
+
+    let mut countWhile = 0;
+
+    while countWhile < 10 {
+        println!("count {}", countWhile);
+        countWhile += 1;
+    }
+
+    let mut count: i32;
+
+    for count in 0..10 {
+        println!("count: {}", count);
+    }
+
+    let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    for element in &array {
+        println!("count: {}", element);
+    }
+
+    // ループ：ラベル
+    'main: loop {
+        println!("main loop start");
+        'sub: loop {
+            println!("sub loop start");
+
+            break 'main;
+            println!("emd loop start"); // 表示されない
+        }
+        println!("end loop start"); // 表示されない
+    }
 }
 
 fn printbox(s: Box<u8>) {
