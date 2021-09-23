@@ -148,6 +148,38 @@ fn main() {
         }
         println!("end loop start"); // 表示されない
     }
+
+    // match
+    let i: i32 = 1;
+    match i {
+        1 => println!("1"),
+        _ => println!("misc"),
+    }
+
+    // match:enum
+    enum Color {
+        Red,
+        Blue,
+        Green,
+    }
+
+    const matchedColor: Color = Color::Blue;
+
+    match matchedColor {
+        Color::Blue => println!("Blue"),
+        _ => println!("misc"),
+    }
+
+    // match:result
+    let result: Result<i32, String> = Ok(100);
+
+    let resule_number = match result {
+        Ok(number) => number,
+        Err(message) => {
+            println!("Error {}", message);
+            -1
+        }
+    };
 }
 
 fn printbox(s: Box<u8>) {
