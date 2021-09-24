@@ -1,3 +1,27 @@
+struct Person2 {
+    name: String,
+    age: u32,
+}
+
+impl Person2 {
+    fn say_name(&self) {
+        println!("I am {}.", self.name)
+    }
+
+    fn say_age(&self) {
+        println!("I am {} year old.", self.age)
+    }
+}
+
+impl Person2 {
+    fn new(name: &str, age: u32) -> Person2 {
+        Person2 {
+            name: String::from(name),
+            age: age,
+        }
+    }
+}
+
 fn main() {
     // String
     let s1: String = String::from("Hello World!");
@@ -180,6 +204,52 @@ fn main() {
             -1
         }
     };
+
+    // Range
+    for number in 1..5 {
+        println!("{}", number);
+    }
+
+    // Iterator
+    let it = Iter { current: 0, max: 0 };
+    for num in it {
+        println!("{}", num)
+    }
+
+    // fn
+    let x = add(1, 2);
+    println!("{}", x);
+
+    // impl
+    let p = Person2 {
+        name: String::from("Taro"),
+        age: 20,
+    };
+    p.say_name();
+    p.say_age();
+}
+
+fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+struct Iter {
+    current: usize,
+    max: usize,
+}
+
+impl Iterator for Iter {
+    type Item = usize;
+
+    // next()
+    fn next(&mut self) -> Option<usize> {
+        self.current += 1;
+        if self.current - 1 < self.max {
+            Some(self.current - 1)
+        } else {
+            None
+        }
+    }
 }
 
 fn printbox(s: Box<u8>) {
