@@ -5,7 +5,7 @@ struct FibIterator {
 
 impl FibIterator {
     fn new() -> Self {
-        FibIterator { a: 1, b: 1 }
+        Self { a: 1, b: 1 }
     }
 }
 
