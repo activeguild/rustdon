@@ -9,6 +9,15 @@ impl FibIterator {
     }
 }
 
+impl Clone for FibIterator {
+    fn clone(&self) -> Self {
+        Self {
+            a: self.a.clone(),
+            b: self.b.clone(),
+        }
+    }
+}
+
 impl Iterator for FibIterator {
     type Item = usize;
     fn next(&mut self) -> Option<Self::Item> {
@@ -21,12 +30,17 @@ impl Iterator for FibIterator {
 
 fn main() {
     let fib_iter = FibIterator::new();
+    let fib_iter2 = fib_iter.clone();
     for (i, n) in fib_iter.enumerate() {
         if i >= 10 {
             break;
         }
         print!("{},", n);
     }
-
-    println!("");
+    for (i, n) in fib_iter2.enumerate() {
+        if i >= 10 {
+            break;
+        }
+        print!("{},", n);
+    }
 }
